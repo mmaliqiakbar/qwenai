@@ -5,10 +5,11 @@ import os
 
 # Initialize client
 client = OpenAI(
-    api_key="sk-4103f3b8ecd14060ae5eb0060828b893",
+    api_key="enteryourvalidkey", # Replace with your DashScope API key
     base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 )
 
+# Function to encode local image to base64 string with MIME type
 def encode_image_to_base64(image_path):
     """Encode a local image to base64 string with proper MIME type."""
     try:
@@ -20,6 +21,7 @@ def encode_image_to_base64(image_path):
         print(f"[ERROR] Failed to encode {image_path}: {e}")
         return None
 
+# Function to analyze an image using Qwen-VL model
 def analyze_image_with_qwen(image, user_question):
     if image is None:
         return "Please upload an image."

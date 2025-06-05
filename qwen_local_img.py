@@ -6,7 +6,7 @@ import base64
 from openai import OpenAI
 
 # Configuration
-IMAGE_FOLDER = r"C:\temp\plnima\img"
+IMAGE_FOLDER = r"C:\temp\plnima\img" # Change this to your local image folder
 API_KEY = "enteryourvalidkey"  # Make sure this is set in environment
 
 # this is the question we will ask the model

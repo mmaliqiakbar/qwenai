@@ -7,10 +7,11 @@ from PIL import Image
 
 # Initialize Qwen client
 client = OpenAI(
-    api_key="sk-4103f3b8ecd14060ae5eb0060828b893",  # Replace with your DashScope API key
+    api_key="enteryourvalidkey",  # Replace with your DashScope API key
     base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1"
 )
 
+# Function to encode PIL image to base64 string
 def encode_image_to_base64(pil_img):
     """Encode a PIL image to base64 string."""
     try:
@@ -27,7 +28,7 @@ def encode_image_to_base64(pil_img):
         print(f"[ERROR] Failed to encode image: {e}")
         return None
 
-
+# Function to detect objects in the image using Qwen
 def detect_objects_with_qwen(pil_img):
     if pil_img is None:
         return "No image captured."
@@ -69,7 +70,7 @@ with gr.Blocks(title="📷 Real-Time Object Detection with Qwen") as demo:
     
     output = gr.Textbox(label="📦 Detected Objects", lines=5)
 
-    # Stream frames and analyze every 3 seconds
+    # Stream frames and analyze every 3 seconds, stream_every=3
     webcam.stream(fn=detect_objects_with_qwen, inputs=[webcam], outputs=output, stream_every=3)
 
 if __name__ == "__main__":
